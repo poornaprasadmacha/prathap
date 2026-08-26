@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "@/components/Hero";
+import LatestUpdatesSection from "@/components/LatestUpdatesSection";
 import TrustSection from "@/components/TrustSection";
 import LoanServices from "@/components/LoanServices";
 import InsuranceServices from "@/components/InsuranceServices";
@@ -16,14 +17,17 @@ import Disclaimer from "@/components/Disclaimer";
 
 export default function HomePage() {
   return (
-    <div className="space-y-0">
-      {/* Hero Banner */}
+    <div className="space-y-0 bg-slate-50">
+      {/* Hero Banner (Soft Mint Canvas & Mosaic Grid - Image 1 Theme) */}
       <Hero />
+
+      {/* Latest Notifications & Rates Ticker (Image 2 Theme) */}
+      <LatestUpdatesSection />
 
       {/* Trust Highlights Bar */}
       <TrustSection />
 
-      {/* Loan Services Section */}
+      {/* Interactive Loan Services Hub (Image 3 Theme) */}
       <LoanServices />
 
       {/* Interactive EMI Calculator Preview */}

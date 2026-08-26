@@ -2,603 +2,289 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ChevronRight, MessageCircle, Phone, Calculator, Search, CheckCircle2 } from "lucide-react";
+import { ChevronRight, MessageCircle, Phone, Calculator, CheckCircle2, Home, User, Briefcase, Building, Shield, FileText, ArrowRight } from "lucide-react";
 import { LOAN_PRODUCTS } from "@/data/loans";
 import { buildWhatsAppLink, buildPhoneCallLink } from "@/lib/utils";
 
-export default function LoanServices() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+type SubTab = "about" | "eligibility" | "apply" | "documents";
 
-  const scrollToSection = (id: string) => {
-    setSelectedCategory(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+export default function LoanServices() {
+  const [activeProductId, setActiveProductId] = useState<string>("home-loan");
+  const [activeSubTab, setActiveSubTab] = useState<SubTab>("about");
+
+  const activeLoan = LOAN_PRODUCTS.find((p) => p.id === activeProductId) || LOAN_PRODUCTS[0];
+
+  const categoryIcons: Record<string, React.ReactNode> = {
+    "home-loan": <Home className="w-6 h-6" />,
+    "personal-loan": <User className="w-6 h-6" />,
+    "business-loan": <Briefcase className="w-6 h-6" />,
+    "loan-against-property": <Building className="w-6 h-6" />,
+    "plot-loan": <Shield className="w-6 h-6" />,
   };
 
   return (
-    <section className="bg-[#F8FAFC] pb-16 pt-4 border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <section className="bg-slate-50 py-12 border-b border-slate-200" id="loan-services">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
-        {/* HDFC Bank Exact Light Blue Hero Banner */}
-        <div className="bg-[#E5F2FD] border border-[#D0E5F7] rounded-3xl p-8 sm:p-12 relative overflow-hidden">
-          <div className="max-w-2xl space-y-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002D58] tracking-tight">
-              Loan Services
-            </h1>
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-              Explore comprehensive retail, housing, personal, and business loan services in Tirupati guided by <strong>M Prathap, MBA</strong> (15+ Years Experience).
-            </p>
-
-            {/* Direct WhatsApp Callout */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <a
-                href={buildWhatsAppLink("Hello M Prathap, I am exploring Loan Services on your website.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#004C8F] hover:bg-[#00386B] text-white font-bold px-5 py-3 rounded-lg text-sm flex items-center gap-2 transition-colors border border-[#00386B]"
-              >
-                <MessageCircle className="w-4 h-4 text-sky-200" />
-                <span>WhatsApp M Prathap</span>
-              </a>
-              <a
-                href={buildPhoneCallLink()}
-                className="bg-white hover:bg-slate-50 text-[#002D58] font-bold px-5 py-3 rounded-lg text-sm flex items-center gap-2 transition-colors border border-slate-300"
-              >
-                <Phone className="w-4 h-4 text-brand-600" />
-                <span>Call +91 9550801743</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* HDFC Bank Horizontal Category Filter Pills Bar */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-3 shadow-none sticky top-20 z-30 flex items-center gap-2 overflow-x-auto scrollbar-none">
-          <button
-            onClick={() => setSelectedCategory("all")}
-            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold whitespace-nowrap transition-colors ${
-              selectedCategory === "all"
-                ? "bg-[#004C8F] text-white"
-                : "bg-[#F1F5F9] text-[#00386B] hover:bg-[#E2E8F0]"
-            }`}
-          >
-            All Loans
-          </button>
-          {LOAN_PRODUCTS.map((loan) => (
-            <button
-              key={loan.id}
-              onClick={() => scrollToSection(loan.id)}
-              className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold whitespace-nowrap transition-colors ${
-                selectedCategory === loan.id
-                  ? "bg-[#004C8F] text-white"
-                  : "bg-[#F1F5F9] text-[#00386B] hover:bg-[#E2E8F0]"
-              }`}
-            >
-              {loan.title} ({loan.indicativeRate}*)
-            </button>
-          ))}
-        </div>
-
-        {/* HDFC Bank Style Multi-Colored Card Blocks */}
-        <div className="space-y-8">
+        {/* Banner with Background & Floating Top Tabs (Image 3 Style) */}
+        <div className="relative bg-slate-900 text-white rounded-3xl overflow-hidden shadow-sm">
           
-          {/* BLOCK 1: HOME LOAN (Soft Lavender/Mauve #F3F0F7) */}
-          <div id="home-loans" className="bg-[#F3F0F7] border border-[#E5DFEB] rounded-3xl p-6 sm:p-10 space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#D8CFE3] pb-4">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#2D1B4E]">Home Loan</h2>
-                <p className="text-xs sm:text-sm text-slate-600">Indicative starting rate from <strong>7.15%*</strong> p.a. for eligible borrowers in Tirupati.</p>
-              </div>
-              <Link
-                href="/home-loans"
-                className="bg-[#004C8F] hover:bg-[#00386B] text-white font-bold px-4 py-2 rounded-lg text-xs transition-colors shrink-0"
+          {/* Background Image / Motif Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 opacity-90"></div>
+          <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+          <div className="relative z-10 p-8 sm:p-12 pb-24 space-y-3 max-w-3xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-950/80 px-3 py-1 rounded-full border border-sky-800/50 inline-block">
+              Interactive Financial Solutions Hub
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+              Retail & Commercial <span className="text-sky-400">Loan Consultancy</span>
+            </h2>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Select a loan category below to explore scheme details, eligibility guidelines, interest rates, and required documentation in Tirupati.
+            </p>
+          </div>
+        </div>
+
+        {/* Floating Product Selector Cards (Image 3 Style) */}
+        <div className="-mt-20 relative z-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 max-w-6xl mx-auto px-2">
+          {LOAN_PRODUCTS.map((loan) => {
+            const isActive = loan.id === activeProductId;
+            return (
+              <button
+                key={loan.id}
+                onClick={() => {
+                  setActiveProductId(loan.id);
+                  setActiveSubTab("about");
+                }}
+                className={`relative group rounded-2xl p-4 transition-all text-left flex flex-col justify-between space-y-3 cursor-pointer ${
+                  isActive
+                    ? "bg-[#0088ff] text-white shadow-md scale-[1.02]"
+                    : "bg-white text-slate-800 border border-slate-200 hover:border-sky-400 hover:shadow-sm"
+                }`}
               >
-                Apply Home Loan &gt;
-              </Link>
-            </div>
+                <div className="flex items-center justify-between">
+                  <div className={`p-2.5 rounded-xl ${isActive ? "bg-white/20 text-white" : "bg-sky-50 text-sky-600"}`}>
+                    {categoryIcons[loan.id] || <FileText className="w-5 h-5" />}
+                  </div>
+                  <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full ${
+                    isActive ? "bg-white text-[#0088ff]" : "bg-slate-100 text-slate-600"
+                  }`}>
+                    {loan.indicativeRate}*
+                  </span>
+                </div>
 
-            {/* 4-Column Links Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs sm:text-sm">
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#2D1B4E] text-base border-b border-[#D8CFE3] pb-1">
-                  Home Loan Services
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Apartment / Flat Purchase</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Independent House Purchase</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Plot + Construction Loan</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Home Loan Balance Transfer</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Home Loan Top-Up</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+                <div>
+                  <h3 className="text-xs sm:text-sm font-extrabold leading-snug line-clamp-2">
+                    {loan.title}
+                  </h3>
+                </div>
 
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#2D1B4E] text-base border-b border-[#D8CFE3] pb-1">
-                  Manage &amp; Apply
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/contact#enquiry-form" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Check Home Loan Eligibility</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/calculators/home-loan" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>View Home Loan EMI Amount</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <a href={buildWhatsAppLink("Hello M Prathap, I want to apply for a Home Loan.")} target="_blank" rel="noopener noreferrer" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>WhatsApp M Prathap</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </a>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Request Doorstep Pickup</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+                {/* Downward Arrow Indicator on Active Tab (Image 3 Beak Effect) */}
+                {isActive && (
+                  <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-[#0088ff]"></div>
+                )}
+              </button>
+            );
+          })}
+        </div>
 
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#2D1B4E] text-base border-b border-[#D8CFE3] pb-1">
-                  Important Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Document Checklist</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Interest Rates (7.15%*)</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/faq" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Home Loan FAQs</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Consultant Credentials</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#2D1B4E] text-base border-b border-[#D8CFE3] pb-1">
-                  Related Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Home Loan for Salaried</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Home Loan for Self-Employed</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/resources/how-to-choose-home-loan-in-tirupati" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>TUDA / DTCP Layout Advice</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/plot-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Plot Loan Options</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+        {/* Interactive Scheme Detail Pane (Image 3 Style) */}
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+          
+          {/* Main Title of Selected Scheme */}
+          <div className="border-b border-slate-200 pb-4">
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900">
+              {activeLoan.title} <span className="text-[#ea580c] font-black">({activeLoan.indicativeRate}*)</span>
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 mt-1">
+              Indicative starting rate from <strong>{activeLoan.indicativeRate}*</strong> per annum across leading banks in Tirupati & Chittoor district.
+            </p>
           </div>
 
-
-          {/* BLOCK 2: PERSONAL LOAN (Soft Warm Beige #FAF7F2) */}
-          <div id="personal-loans" className="bg-[#FAF7F2] border border-[#EFE7D8] rounded-3xl p-6 sm:p-10 space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#E3D7C1] pb-4">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#4A3B1B]">Personal Loan</h2>
-                <p className="text-xs sm:text-sm text-slate-600">Indicative starting rate from <strong>9.90%*</strong> p.a. Collateral-free personal credit.</p>
-              </div>
-              <Link
-                href="/personal-loans"
-                className="bg-[#004C8F] hover:bg-[#00386B] text-white font-bold px-4 py-2 rounded-lg text-xs transition-colors shrink-0"
+          {/* Image 3 Interactive Split Pane: Left Vertical Pills + Right Content Box */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+            
+            {/* Left Column: Vertical Pill Buttons (Image 3 Style) */}
+            <div className="md:col-span-4 lg:col-span-3 space-y-2.5">
+              
+              <button
+                onClick={() => setActiveSubTab("about")}
+                className={`w-full text-left px-4 py-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-between border ${
+                  activeSubTab === "about"
+                    ? "bg-white text-sky-600 border-sky-500 shadow-sm"
+                    : "bg-[#faf7f2] text-slate-700 border-[#eae4d9] hover:bg-slate-100"
+                }`}
               >
-                Apply Personal Loan &gt;
-              </Link>
-            </div>
+                <span>About Scheme</span>
+                <ChevronRight className={`w-4 h-4 ${activeSubTab === "about" ? "text-sky-600" : "text-slate-400"}`} />
+              </button>
 
-            {/* 4-Column Links Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs sm:text-sm">
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4A3B1B] text-base border-b border-[#E3D7C1] pb-1">
-                  Personal Loan Services
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Salaried Personal Loans</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Self-Employed Personal Credit</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Medical Emergency Loans</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Higher Education Loans</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4A3B1B] text-base border-b border-[#E3D7C1] pb-1">
-                  Manage &amp; Apply
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/contact#enquiry-form" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Check Loan Eligibility</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/calculators/personal-loan" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Calculate EMI Amount</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <a href={buildWhatsAppLink("Hello M Prathap, I want to apply for a Personal Loan.")} target="_blank" rel="noopener noreferrer" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>WhatsApp M Prathap</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4A3B1B] text-base border-b border-[#E3D7C1] pb-1">
-                  Important Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Personal Loan Documents</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Interest Rates (9.90%*)</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/faq" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Personal Loan FAQs</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4A3B1B] text-base border-b border-[#E3D7C1] pb-1">
-                  Related Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Marriage &amp; Family Function</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/personal-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Debt Consolidation</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/health-insurance" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Health Insurance Protection</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-
-          {/* BLOCK 3: BUSINESS LOAN (Soft Light Blue #EFF5FA) */}
-          <div id="business-loans" className="bg-[#EFF5FA] border border-[#DCE8F3] rounded-3xl p-6 sm:p-10 space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#C8DCED] pb-4">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1B364D]">Business Loan</h2>
-                <p className="text-xs sm:text-sm text-slate-600">Indicative starting rate from <strong>10.00%*</strong> p.a. MSME &amp; working capital finance.</p>
-              </div>
-              <Link
-                href="/business-loans"
-                className="bg-[#004C8F] hover:bg-[#00386B] text-white font-bold px-4 py-2 rounded-lg text-xs transition-colors shrink-0"
+              <button
+                onClick={() => setActiveSubTab("eligibility")}
+                className={`w-full text-left px-4 py-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-between border ${
+                  activeSubTab === "eligibility"
+                    ? "bg-white text-sky-600 border-sky-500 shadow-sm"
+                    : "bg-[#faf7f2] text-slate-700 border-[#eae4d9] hover:bg-slate-100"
+                }`}
               >
-                Apply Business Loan &gt;
-              </Link>
-            </div>
+                <span>About Eligibility</span>
+                <ChevronRight className={`w-4 h-4 ${activeSubTab === "eligibility" ? "text-sky-600" : "text-slate-400"}`} />
+              </button>
 
-            {/* 4-Column Links Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs sm:text-sm">
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#1B364D] text-base border-b border-[#C8DCED] pb-1">
-                  Business Loan Services
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Working Capital Finance</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>MSME Business Loans</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Machinery &amp; Equipment Purchase</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Bulk Inventory Stock Loan</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#1B364D] text-base border-b border-[#C8DCED] pb-1">
-                  Manage &amp; Apply
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/contact#enquiry-form" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Check Business Credit Line</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/calculators/business-loan" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>View Business EMI Schedule</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <a href={buildWhatsAppLink("Hello M Prathap, I want to inquire about a Business Loan.")} target="_blank" rel="noopener noreferrer" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>WhatsApp Business Advisory</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#1B364D] text-base border-b border-[#C8DCED] pb-1">
-                  Important Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>GST &amp; Financial Checklist</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Business Rates (10.00%*)</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/loan-against-property" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Commercial Property LAP</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#1B364D] text-base border-b border-[#C8DCED] pb-1">
-                  Related Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Business for Retail Traders</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Business for Manufacturers</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-
-          {/* BLOCK 4: LOAN AGAINST PROPERTY (Soft Peach #FDF5EC) */}
-          <div id="loan-against-property" className="bg-[#FDF5EC] border border-[#F5E6D3] rounded-3xl p-6 sm:p-10 space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#E8D4BE] pb-4">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#4D301B]">Loan Against Property (LAP)</h2>
-                <p className="text-xs sm:text-sm text-slate-600">Indicative starting rate from <strong>8.50%*</strong> p.a. Residential &amp; commercial property mortgage.</p>
-              </div>
-              <Link
-                href="/loan-against-property"
-                className="bg-[#004C8F] hover:bg-[#00386B] text-white font-bold px-4 py-2 rounded-lg text-xs transition-colors shrink-0"
+              <button
+                onClick={() => setActiveSubTab("apply")}
+                className={`w-full text-left px-4 py-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-between border ${
+                  activeSubTab === "apply"
+                    ? "bg-white text-sky-600 border-sky-500 shadow-sm"
+                    : "bg-[#faf7f2] text-slate-700 border-[#eae4d9] hover:bg-slate-100"
+                }`}
               >
-                Apply LAP Loan &gt;
-              </Link>
+                <span>How to Apply</span>
+                <ChevronRight className={`w-4 h-4 ${activeSubTab === "apply" ? "text-sky-600" : "text-slate-400"}`} />
+              </button>
+
+              <button
+                onClick={() => setActiveSubTab("documents")}
+                className={`w-full text-left px-4 py-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-between border ${
+                  activeSubTab === "documents"
+                    ? "bg-white text-sky-600 border-sky-500 shadow-sm"
+                    : "bg-[#faf7f2] text-slate-700 border-[#eae4d9] hover:bg-slate-100"
+                }`}
+              >
+                <span>Required Documents</span>
+                <ChevronRight className={`w-4 h-4 ${activeSubTab === "documents" ? "text-sky-600" : "text-slate-400"}`} />
+              </button>
+
+              {/* Calculator Shortcut */}
+              <div className="pt-4">
+                <Link
+                  href="/calculators"
+                  className="w-full bg-[#fae8de] hover:bg-[#f8ded1] text-[#9a3412] font-bold p-3.5 rounded-2xl border border-[#f3cbb7] text-xs flex items-center gap-2 transition-colors"
+                >
+                  <Calculator className="w-4 h-4 text-[#ea580c]" />
+                  <span>Open EMI Calculator</span>
+                </Link>
+              </div>
+
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs sm:text-sm">
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4D301B] text-base border-b border-[#E8D4BE] pb-1">
-                  LAP Loan Services
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/loan-against-property" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Residential Property LAP</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/loan-against-property" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Commercial Property LAP</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/loan-against-property" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>High-Value Expansion LAP</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
+            {/* Right Column: Detailed Pane Display (Image 3 Right Pane Style) */}
+            <div className="md:col-span-8 lg:col-span-9 bg-[#fffdfa] border border-[#eae4d9] rounded-2xl p-6 sm:p-8 space-y-6 relative border-r-4 border-r-sky-500">
+              
+              {/* Tab Content 1: About Scheme */}
+              {activeSubTab === "about" && (
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold text-slate-900">
+                    Scheme Description & Key Benefits
+                  </h4>
+                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+                    {activeLoan.description}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    {activeLoan.highlights.map((h, idx) => (
+                      <div key={idx} className="flex items-start gap-2 bg-white p-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 font-semibold">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Tab Content 2: About Eligibility */}
+              {activeSubTab === "eligibility" && (
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold text-slate-900">
+                    Borrower Qualification & Eligibility Criteria
+                  </h4>
+                  <p className="text-slate-700 text-sm leading-relaxed">
+                    Eligibility is evaluated based on monthly income, credit score (750+ CIBIL), existing FOIR ratio, and property verification (for secured loans).
+                  </p>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-2 text-xs sm:text-sm">
+                    <div className="font-bold text-slate-900">Key Qualifications:</div>
+                    <ul className="list-disc pl-5 space-y-1 text-slate-700">
+                      <li>Salaried Individuals: Minimum monthly net salary ₹20,000/- with 1+ year job continuity.</li>
+                      <li>Self-Employed / Business Owners: Minimum 2 years IT Returns & business registration proofs.</li>
+                      <li>Age Limit: 21 years to 65 years at loan maturity.</li>
+                      <li>Location: Property or residence within Tirupati, Chittoor, AP or surrounding mandals.</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab Content 3: How to Apply */}
+              {activeSubTab === "apply" && (
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold text-slate-900">
+                    Step-by-Step Application Process
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                      <div className="w-7 h-7 rounded-full bg-sky-100 text-sky-700 font-bold text-xs flex items-center justify-center mx-auto">1</div>
+                      <div className="font-bold text-xs text-slate-900">Consultation</div>
+                      <p className="text-[11px] text-slate-600">Share your requirement & document check with M Prathap.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                      <div className="w-7 h-7 rounded-full bg-sky-100 text-sky-700 font-bold text-xs flex items-center justify-center mx-auto">2</div>
+                      <div className="font-bold text-xs text-slate-900">Bank Comparison</div>
+                      <p className="text-[11px] text-slate-600">We compare rates across HDFC, SBI, ICICI & select best fit.</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 text-center space-y-1">
+                      <div className="w-7 h-7 rounded-full bg-sky-100 text-sky-700 font-bold text-xs flex items-center justify-center mx-auto">3</div>
+                      <div className="font-bold text-xs text-slate-900">Sanction & Payout</div>
+                      <p className="text-[11px] text-slate-600">Doorstep document pick-up, sanction letter & fast disbursement.</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab Content 4: Required Documents */}
+              {activeSubTab === "documents" && (
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold text-slate-900">
+                    Mandatory Documentation Checklist
+                  </h4>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-3 text-xs sm:text-sm">
+                    <div className="font-bold text-slate-900">Required Documents Checklist:</div>
+                    <ul className="list-disc pl-5 space-y-1 text-slate-700">
+                      <li>KYC: Aadhaar Card, PAN Card, Passport Photos.</li>
+                      <li>Financials: 6 Months Bank Statement & 3 Months Salary Slips (Salaried) or 2 Years ITR (Business).</li>
+                      <li>Property Documents (for Home/LAP/Plot Loans): Title link deeds (13-30 yrs), EC, legal opinion, and approved plan copy.</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Action Buttons Row */}
+              <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-slate-200">
+                <a
+                  href={buildWhatsAppLink(`Hello M Prathap, I am interested in ${activeLoan.title} (${activeLoan.indicativeRate}*).`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4 text-emerald-100" />
+                  <span>Inquire on WhatsApp</span>
+                </a>
+                <a
+                  href={buildPhoneCallLink()}
+                  className="bg-slate-900 hover:bg-slate-950 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 transition-colors"
+                >
+                  <Phone className="w-4 h-4 text-blue-300" />
+                  <span>Call +91 95508 01743</span>
+                </a>
+                <Link
+                  href="/contact#enquiry-form"
+                  className="bg-sky-50 hover:bg-sky-100 text-sky-800 font-bold px-4 py-2.5 rounded-xl text-xs border border-sky-300 flex items-center gap-1 transition-colors ml-auto"
+                >
+                  <span>Check Loan Eligibility</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4D301B] text-base border-b border-[#E8D4BE] pb-1">
-                  Manage &amp; Apply
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/contact#enquiry-form" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Check Title Legal Clearance</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/calculators/loan-against-property" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Calculate LAP EMI</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <a href={buildWhatsAppLink("Hello M Prathap, I want to inquire about Loan Against Property.")} target="_blank" rel="noopener noreferrer" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>WhatsApp Property Advisory</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4D301B] text-base border-b border-[#E8D4BE] pb-1">
-                  Important Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/loan-against-property" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Property Documents Needed</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/loan-against-property" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Starting Rate (8.50%*)</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="font-extrabold text-[#4D301B] text-base border-b border-[#E8D4BE] pb-1">
-                  Related Links
-                </h3>
-                <ul className="space-y-1.5 font-medium">
-                  <li>
-                    <Link href="/home-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Home Loan Options</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/business-loans" className="text-[#004C8F] hover:underline flex items-center justify-between">
-                      <span>Business Finance</span>
-                      <span className="text-red-600 font-bold ml-1">&gt;</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
             </div>
+
           </div>
 
         </div>
