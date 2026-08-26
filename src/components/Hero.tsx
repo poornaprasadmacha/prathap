@@ -44,7 +44,7 @@ export default function Hero() {
             {/* Main Two-Tone Headline (Image 1 Style) */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
               <span className="text-[#10b981]">Financial Growth</span> is the most{" "}
-              <span className="text-[#ea580c]">powerful key</span> you can use to secure your family's future.
+              <span className="text-[#ea580c]">powerful key</span> you can use to secure your family&apos;s future.
             </h1>
 
             {/* Subtitle / Description */}
