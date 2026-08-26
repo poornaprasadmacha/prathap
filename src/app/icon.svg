@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect width="512" height="512" rx="128" fill="#0F2942" stroke="#2563EB" stroke-width="24" />
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="220" letter-spacing="-8">MP</text>
+  <path d="M128 416h256" stroke="#2563EB" stroke-width="24" stroke-linecap="round" />
+</svg>
