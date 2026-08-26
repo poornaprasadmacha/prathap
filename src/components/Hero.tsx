@@ -3,160 +3,232 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, MessageCircle, Award, ChevronRight, Calculator, ShieldCheck, CheckCircle2, Building2, TrendingUp } from "lucide-react";
+import { Phone, MessageCircle, Award, ChevronRight, Calculator, ShieldCheck, UserCheck } from "lucide-react";
 import { buildWhatsAppLink, buildPhoneCallLink } from "@/lib/utils";
 
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-b from-slate-900 via-brand-950 to-brand-900 text-white py-10 lg:py-16 relative overflow-hidden border-b border-slate-800">
-      {/* Decorative Glow & Grid Background */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+    <section className="bg-slate-50 py-6 sm:py-8 lg:py-10 px-3 sm:px-6 lg:px-8">
+      {/* Outer Pro Soft Mint Canvas Box with Curved Borders */}
+      <div className="max-w-7xl mx-auto bg-[#edf6ed] border border-[#cfebd0] rounded-3xl p-5 sm:p-8 lg:p-10 relative overflow-hidden shadow-sm">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Decorative Wave Lines Graphic */}
+        <div className="absolute inset-0 pointer-events-none opacity-30">
+          <svg className="w-full h-full" viewBox="0 0 1000 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-100 100 Q 200 400 600 200 T 1200 300" stroke="#10b981" strokeWidth="1.5" fill="none" />
+            <path d="M-100 150 Q 200 450 600 250 T 1200 350" stroke="#059669" strokeWidth="1" strokeDasharray="4 4" fill="none" />
+            <path d="M-100 200 Q 200 500 600 300 T 1200 400" stroke="#ea580c" strokeWidth="1.5" fill="none" />
+          </svg>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
           
-          {/* Left Main Advisory Hero Content */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Hero Content & Profile Badge */}
+          <div className="lg:col-span-6 space-y-6">
             
-            {/* Professional Qualification Badge */}
-            <div className="inline-flex items-center gap-2 bg-blue-950/80 border border-blue-700/60 px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-200 shadow-sm">
-              <Award className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>M Prathap, MBA • 15+ Years Financial Advisory in Tirupati</span>
+            {/* Framed Consultant Badge with Photo */}
+            <div className="inline-flex items-center gap-3 bg-white border border-[#b8e2b8] p-1.5 pr-4 rounded-2xl shadow-sm">
+              <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0 relative">
+                <Image
+                  src="/images/prathap.png"
+                  alt="M Prathap, MBA - Financial Consultant Tirupati"
+                  width={96}
+                  height={96}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-sm font-bold text-slate-900 flex items-center gap-1">
+                  M Prathap, MBA
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 inline shrink-0" />
+                </span>
+                <span className="text-xs font-semibold text-emerald-700">
+                  15+ Years Financial Sector Advisor • Tirupati
+                </span>
+              </div>
             </div>
 
-            {/* High Impact Professional Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-              Expert Home Loans, Personal Credit & Insurance in <span className="text-sky-400">Tirupati</span>
+            {/* Main Two-Tone Light Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              <span className="text-[#10b981]">Financial Growth</span> is the most{" "}
+              <span className="text-[#ea580c]">powerful key</span> you can use to secure your family&apos;s future.
             </h1>
 
-            {/* Clear Description */}
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
-              Compare rates across top banks (HDFC, SBI, ICICI, Union Bank), get doorstep legal document verification, and secure high-approval loans tailored for your family.
+            {/* Subtitle */}
+            <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-medium max-w-xl">
+              Get expert, unbiased assistance in Tirupati for <span className="font-bold text-slate-900">Home Loans (Starts 7.15%*)</span>, <span className="font-bold text-slate-900">LAP (8.50%*)</span>, <span className="font-bold text-slate-900">Personal Loans (9.90%*)</span>, and comprehensive <span className="font-bold text-slate-900">Health & Life Insurance</span>.
             </p>
 
-            {/* Prominent Recognized Action Buttons (WhatsApp & Phone Icons) */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              
-              {/* WhatsApp Direct Action Button */}
+            {/* Interactive Calculator CTA Box */}
+            <Link
+              href="/calculators"
+              className="group flex items-center gap-4 bg-[#fae8de] hover:bg-[#f8ded1] border border-[#f3cbb7] p-3.5 rounded-2xl transition-all shadow-sm"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#ea580c] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                <Calculator className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#9a3412]">
+                  Interactive EMI Tools
+                </span>
+                <span className="text-sm font-bold text-slate-900 flex items-center gap-1">
+                  Calculate Home Loan & Personal Loan EMI
+                  <ChevronRight className="w-4 h-4 text-[#ea580c] group-hover:translate-x-1 transition-transform" />
+                </span>
+              </div>
+            </Link>
+
+            {/* Recognized Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <a
                 href={buildWhatsAppLink("Hello M Prathap, I would like to inquire about loan options in Tirupati.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-3 rounded-xl text-sm transition-all flex items-center gap-2.5 shadow-md hover:shadow-emerald-900/30"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 shadow-sm"
               >
-                <MessageCircle className="w-5 h-5 text-emerald-100 fill-emerald-100/20 shrink-0" />
+                <MessageCircle className="w-4 h-4 text-emerald-100 fill-emerald-100/20" />
                 <span>WhatsApp M Prathap</span>
               </a>
-
-              {/* Direct Phone Call Button */}
               <a
                 href={buildPhoneCallLink()}
-                className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-3 rounded-xl text-sm transition-all flex items-center gap-2.5 shadow-md hover:shadow-blue-900/30"
+                className="bg-brand-900 hover:bg-brand-950 text-white font-bold px-5 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 shadow-sm"
               >
-                <Phone className="w-5 h-5 text-blue-100 shrink-0" />
+                <Phone className="w-4 h-4 text-blue-300" />
                 <span>Call +91 95508 01743</span>
               </a>
-
-              {/* Calculator Shortcut */}
               <Link
-                href="/calculators"
-                className="bg-amber-600 hover:bg-amber-500 text-white font-bold px-5 py-3 rounded-xl text-sm transition-all flex items-center gap-2 shadow-md"
+                href="/contact#enquiry-form"
+                className="bg-white hover:bg-slate-100 text-brand-900 font-bold px-5 py-3 rounded-xl text-sm transition-colors border border-slate-300 flex items-center gap-1 shadow-sm"
               >
-                <Calculator className="w-5 h-5 text-amber-100 shrink-0" />
-                <span>Calculate EMI</span>
+                <span>Check Loan Eligibility</span>
               </Link>
             </div>
 
-            {/* Live Indicative Rate Cards Strip */}
-            <div className="pt-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
-                Live Indicative Benchmark Interest Rates:
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div className="bg-slate-900/90 border border-slate-700/80 p-3 rounded-xl text-center hover:border-emerald-500/50 transition-colors">
-                  <span className="text-xs text-slate-400 block font-semibold">Home Loans</span>
-                  <span className="text-lg font-black text-emerald-400">7.15%<span className="text-xs text-emerald-300">*</span></span>
-                </div>
-                <div className="bg-slate-900/90 border border-slate-700/80 p-3 rounded-xl text-center hover:border-amber-500/50 transition-colors">
-                  <span className="text-xs text-slate-400 block font-semibold">LAP Loans</span>
-                  <span className="text-lg font-black text-amber-400">8.50%<span className="text-xs text-amber-300">*</span></span>
-                </div>
-                <div className="bg-slate-900/90 border border-slate-700/80 p-3 rounded-xl text-center hover:border-sky-500/50 transition-colors">
-                  <span className="text-xs text-slate-400 block font-semibold">Personal Loans</span>
-                  <span className="text-lg font-black text-sky-400">9.90%<span className="text-xs text-sky-300">*</span></span>
-                </div>
-                <div className="bg-slate-900/90 border border-slate-700/80 p-3 rounded-xl text-center hover:border-purple-500/50 transition-colors">
-                  <span className="text-xs text-slate-400 block font-semibold">Business Loans</span>
-                  <span className="text-lg font-black text-purple-400">10.00%<span className="text-xs text-purple-300">*</span></span>
-                </div>
+            {/* Indicative Benchmark Rates */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+              <div className="bg-white border border-[#cbe3cb] p-2.5 rounded-xl text-center shadow-xs">
+                <span className="text-[11px] font-semibold text-slate-600 block">Home Loans</span>
+                <span className="text-base font-extrabold text-[#10b981]">7.15%*</span>
+              </div>
+              <div className="bg-white border border-[#cbe3cb] p-2.5 rounded-xl text-center shadow-xs">
+                <span className="text-[11px] font-semibold text-slate-600 block">LAP Loans</span>
+                <span className="text-base font-extrabold text-[#ea580c]">8.50%*</span>
+              </div>
+              <div className="bg-white border border-[#cbe3cb] p-2.5 rounded-xl text-center shadow-xs">
+                <span className="text-[11px] font-semibold text-slate-600 block">Personal Loans</span>
+                <span className="text-base font-extrabold text-blue-600">9.90%*</span>
+              </div>
+              <div className="bg-white border border-[#cbe3cb] p-2.5 rounded-xl text-center shadow-xs">
+                <span className="text-[11px] font-semibold text-slate-600 block">Business Loans</span>
+                <span className="text-base font-extrabold text-purple-600">10.00%*</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Consultant Profile Box & Key Pillars */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* Right Column: Pro 6-Card Mosaic Grid */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             
-            {/* Consultant Profile Frame */}
-            <div className="bg-slate-900/90 border border-slate-700 rounded-3xl p-6 space-y-5 shadow-xl">
-              
-              <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
-                <div className="w-16 h-20 rounded-2xl overflow-hidden bg-slate-950 border-2 border-sky-400 shrink-0 relative shadow-md">
+            {/* Card 1: Advisor Experience Card with Photo */}
+            <div className="bg-white border border-[#d6ebd6] rounded-2xl p-5 shadow-sm flex flex-col justify-between space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0 relative">
                   <Image
                     src="/images/prathap.png"
-                    alt="M Prathap, MBA - Financial Consultant Tirupati"
-                    width={160}
-                    height={192}
+                    alt="M Prathap, MBA"
+                    width={96}
+                    height={96}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-sky-400 block">
-                    Financial Consultant
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block">
+                    Trusted Consultant
                   </span>
-                  <h2 className="text-xl font-extrabold text-white flex items-center gap-1.5">
+                  <h4 className="text-xs sm:text-sm font-extrabold text-slate-900">
                     M Prathap, MBA
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                  </h2>
-                  <p className="text-xs text-slate-300 font-medium">
-                    15+ Years Financial Sector Advisor in Tirupati & Chittoor
-                  </p>
+                  </h4>
                 </div>
               </div>
-
-              {/* 4 Pillars of Trust */}
-              <div className="space-y-3 text-xs sm:text-sm text-slate-300">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span><strong>Multi-Bank Rate Comparison:</strong> Comparing offers across HDFC, SBI, ICICI & top NBFCs.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span><strong>Doorstep Document Processing:</strong> Complete pre-verification for TUDA & DTCP plots.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span><strong>Transparent Guidance:</strong> 100% clear terms, zero hidden processing fees.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span><strong>360° Family Shield:</strong> Term life & health floater insurance consultation.</span>
-                </div>
+              <div>
+                <h3 className="text-sm font-extrabold text-slate-900">
+                  15+ Years Consultancy in Tirupati
+                </h3>
+                <p className="text-xs text-slate-600 mt-1">
+                  Guiding thousands of families through seamless loan approvals and legal title verification.
+                </p>
               </div>
+            </div>
 
-              {/* Bottom Quick Contact Strip */}
-              <div className="pt-2 flex items-center justify-between gap-2 text-xs border-t border-slate-800">
-                <span className="text-slate-400 font-medium">Direct Advisory:</span>
-                <a
-                  href={buildPhoneCallLink()}
-                  className="text-sky-300 hover:text-white font-bold flex items-center gap-1 transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  +91 95508 01743
-                </a>
+            {/* Card 2: Soft Rose Quote Card (#f9d8d6) */}
+            <div className="bg-[#f9d8d6] border border-[#f3bebe] text-[#881337] rounded-2xl p-5 flex flex-col justify-between space-y-3 shadow-sm">
+              <div className="text-2xl font-black opacity-40">“</div>
+              <p className="text-xs sm:text-sm font-bold leading-snug">
+                Financial planning is the passport to the future, for tomorrow belongs to those who prepare for it today.
+              </p>
+              <div className="text-[11px] font-semibold uppercase tracking-wider text-[#9f1239]">
+                — Financial Wisdom
               </div>
+            </div>
 
+            {/* Card 3: MBA Emblem Card */}
+            <div className="bg-slate-900 text-white rounded-2xl p-5 flex flex-col justify-between space-y-4 border border-slate-800 shadow-sm">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                  M Prathap Advisory
+                </span>
+                <UserCheck className="w-5 h-5 text-blue-400" />
+              </div>
+              <div>
+                <div className="text-xl font-black tracking-wide text-white">
+                  MBA FINANCIAL SERVICES
+                </div>
+                <p className="text-xs text-slate-300 mt-1">
+                  Independent consultancy with direct access to HDFC, SBI, ICICI, Union Bank & leading NBFCs.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 4: Soft Lavender Award Card (#e0e7ff) */}
+            <div className="bg-[#e0e7ff] border border-[#c7d2fe] text-[#3730a3] rounded-2xl p-5 flex flex-col justify-between space-y-3 shadow-sm">
+              <div className="w-9 h-9 rounded-lg bg-[#c7d2fe] text-[#312e81] flex items-center justify-center font-bold text-xs">
+                2025
+              </div>
+              <div>
+                <h4 className="text-sm font-extrabold text-[#312e81]">
+                  Financial Excellence & Client Trust
+                </h4>
+                <p className="text-xs text-[#4338ca] mt-1">
+                  Recognized for 100% transparent doorstep loan guidance in Tirupati & Chittoor.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 5: Client Satisfaction Card */}
+            <div className="bg-white border border-[#d6ebd6] rounded-2xl p-5 flex flex-col justify-between space-y-3 shadow-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs">
+                  100%
+                </div>
+                <span className="text-xs font-bold text-slate-800">10,000+ Happy Families</span>
+              </div>
+              <p className="text-xs text-slate-600">
+                End-to-end support from documentation check, bank login, property valuation to disbursement.
+              </p>
+              <div className="text-[11px] font-bold text-emerald-700 flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                Zero Processing Complications
+              </div>
+            </div>
+
+            {/* Card 6: Soft Mint Wisdom Card (#d1f4e4) */}
+            <div className="bg-[#d1f4e4] border border-[#a7f3d0] text-[#065f46] rounded-2xl p-5 flex flex-col justify-between space-y-3 shadow-sm">
+              <p className="text-xs sm:text-sm font-semibold leading-relaxed">
+                Proper financial advice makes a person fearless, teaches them the value of security, and inspires them to achieve their home ownership goals.
+              </p>
+              <div className="text-[10px] font-bold uppercase tracking-wider text-[#047857]">
+                Tirupati Loan & Insurance Hub
+              </div>
             </div>
 
           </div>
