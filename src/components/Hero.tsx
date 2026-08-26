@@ -26,9 +26,13 @@ export default function Hero() {
           <div className="lg:col-span-6 space-y-6">
             
             {/* Framed Consultant Badge (Image 1 Style) */}
-            <div className="inline-flex items-center gap-3 bg-white border border-[#c3e2c3] p-2 pr-4 rounded-2xl shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-900 to-brand-800 flex items-center justify-center text-white font-bold text-lg border border-brand-700 shrink-0">
-                MP
+            <div className="inline-flex items-center gap-3 bg-white border border-[#c3e2c3] p-1.5 pr-4 rounded-2xl shadow-sm">
+              <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0">
+                <img
+                  src="/images/prathap.png"
+                  alt="M Prathap, MBA - Financial Consultant Tirupati"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-sm font-bold text-slate-900 flex items-center gap-1">
@@ -124,14 +128,25 @@ export default function Hero() {
             
             {/* Card 1: Advisor Experience Card */}
             <div className="bg-white border border-[#d6ebd6] rounded-2xl p-5 shadow-sm flex flex-col justify-between space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
-                <Award className="w-5 h-5" />
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0">
+                  <img
+                    src="/images/prathap.png"
+                    alt="M Prathap, MBA"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 block">
+                    Trusted Consultant
+                  </span>
+                  <h4 className="text-xs sm:text-sm font-extrabold text-slate-900">
+                    M Prathap, MBA
+                  </h4>
+                </div>
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
-                  Trusted Financial Expertise
-                </span>
-                <h3 className="text-base font-extrabold text-slate-900 mt-1">
+                <h3 className="text-sm font-extrabold text-slate-900">
                   15+ Years Consultancy in Tirupati
                 </h3>
                 <p className="text-xs text-slate-600 mt-1">

@@ -10,15 +10,24 @@ export default function AboutPrathap() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Consultant Profile Badge & Stats */}
-          <div className="lg:col-span-5 bg-brand-950 border border-blue-800 rounded-md p-6 sm:p-8 space-y-6">
-            <div className="space-y-2 border-b border-blue-800/80 pb-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400 block">
-                Senior Financial Advisor
-              </span>
-              <h2 className="text-3xl font-extrabold text-white">M Prathap</h2>
-              <div className="inline-flex items-center gap-1.5 bg-brand-800 text-blue-200 border border-blue-700/60 px-3 py-1 rounded text-xs font-semibold">
-                <GraduationCap className="w-4 h-4 text-blue-400" />
-                <span>Qualification: MBA</span>
+          <div className="lg:col-span-5 bg-brand-950 border border-blue-800 rounded-2xl p-6 sm:p-8 space-y-6">
+            <div className="flex items-center gap-4 border-b border-blue-800/80 pb-4">
+              <div className="w-20 h-24 rounded-xl overflow-hidden bg-slate-900 border-2 border-blue-400 shrink-0 shadow-sm">
+                <img
+                  src="/images/prathap.png"
+                  alt="M Prathap, MBA - Senior Financial Advisor"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="space-y-1">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-400 block">
+                  Senior Financial Advisor
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white">M Prathap</h2>
+                <div className="inline-flex items-center gap-1.5 bg-brand-800 text-blue-200 border border-blue-700/60 px-2.5 py-0.5 rounded text-xs font-semibold">
+                  <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Qualification: MBA</span>
+                </div>
               </div>
             </div>
 
