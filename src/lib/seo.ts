@@ -1,4 +1,4 @@
-export const SITE_URL = "https://mprathapfinancial.com"; // Placeholder production domain
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://prathap.ceeras.in";
 
 export const BUSINESS_DETAILS = {
   name: "M Prathap Financial Services",

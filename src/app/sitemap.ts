@@ -6,7 +6,7 @@ import { RESOURCE_ARTICLES } from "@/data/articles";
 import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const currentDate = new Date().toISOString();
+  const currentDate = new Date();
 
   // Static Pages
   const staticRoutes = [

@@ -3,10 +3,10 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
-import { getLocalBusinessSchema } from "@/lib/seo";
+import { getLocalBusinessSchema, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mprathapfinancial.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "M Prathap Financial Services | Loans & Insurance in Tirupati",
     template: "%s | M Prathap Financial Services Tirupati"
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://mprathapfinancial.com",
+    url: SITE_URL,
     siteName: "M Prathap Financial Services",
     title: "M Prathap Financial Services | Loans & Insurance in Tirupati",
     description: "Expert loan & insurance guidance from M Prathap, MBA with 15+ years experience in Tirupati. Home Loans, LAP, Personal Loans, Business Finance & Health Insurance.",
