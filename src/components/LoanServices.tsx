@@ -9,17 +9,17 @@ import { buildWhatsAppLink, buildPhoneCallLink } from "@/lib/utils";
 type SubTab = "about" | "eligibility" | "apply" | "documents";
 
 export default function LoanServices() {
-  const [activeProductId, setActiveProductId] = useState<string>("home-loan");
+  const [activeProductId, setActiveProductId] = useState<string>("home-loans");
   const [activeSubTab, setActiveSubTab] = useState<SubTab>("about");
 
   const activeLoan = LOAN_PRODUCTS.find((p) => p.id === activeProductId) || LOAN_PRODUCTS[0];
 
   const categoryIcons: Record<string, React.ReactNode> = {
-    "home-loan": <Home className="w-6 h-6" />,
-    "personal-loan": <User className="w-6 h-6" />,
-    "business-loan": <Briefcase className="w-6 h-6" />,
+    "home-loans": <Home className="w-6 h-6" />,
+    "personal-loans": <User className="w-6 h-6" />,
+    "business-loans": <Briefcase className="w-6 h-6" />,
     "loan-against-property": <Building className="w-6 h-6" />,
-    "plot-loan": <Shield className="w-6 h-6" />,
+    "plot-loans": <Shield className="w-6 h-6" />,
   };
 
   return (
@@ -176,16 +176,16 @@ export default function LoanServices() {
               {activeSubTab === "about" && (
                 <div className="space-y-4">
                   <h4 className="text-lg font-bold text-slate-900">
-                    Scheme Description & Key Benefits
+                    Scheme Description & Key Features
                   </h4>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-                    {activeLoan.description}
+                    {activeLoan.fullDescription}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    {activeLoan.highlights.map((h, idx) => (
+                    {activeLoan.features.map((feature, idx) => (
                       <div key={idx} className="flex items-start gap-2 bg-white p-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 font-semibold">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{h}</span>
+                        <span>{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -199,15 +199,14 @@ export default function LoanServices() {
                     Borrower Qualification & Eligibility Criteria
                   </h4>
                   <p className="text-slate-700 text-sm leading-relaxed">
-                    Eligibility is evaluated based on monthly income, credit score (750+ CIBIL), existing FOIR ratio, and property verification (for secured loans).
+                    Eligibility is evaluated based on monthly income, credit score (750+ CIBIL preferred), existing FOIR ratio, and property verification (for secured loans).
                   </p>
                   <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-2 text-xs sm:text-sm">
-                    <div className="font-bold text-slate-900">Key Qualifications:</div>
+                    <div className="font-bold text-slate-900">Key Qualifications for {activeLoan.title}:</div>
                     <ul className="list-disc pl-5 space-y-1 text-slate-700">
-                      <li>Salaried Individuals: Minimum monthly net salary ₹20,000/- with 1+ year job continuity.</li>
-                      <li>Self-Employed / Business Owners: Minimum 2 years IT Returns & business registration proofs.</li>
-                      <li>Age Limit: 21 years to 65 years at loan maturity.</li>
-                      <li>Location: Property or residence within Tirupati, Chittoor, AP or surrounding mandals.</li>
+                      {activeLoan.eligibility.map((el, idx) => (
+                        <li key={idx}>{el}</li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -246,12 +245,26 @@ export default function LoanServices() {
                     Mandatory Documentation Checklist
                   </h4>
                   <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-3 text-xs sm:text-sm">
-                    <div className="font-bold text-slate-900">Required Documents Checklist:</div>
-                    <ul className="list-disc pl-5 space-y-1 text-slate-700">
-                      <li>KYC: Aadhaar Card, PAN Card, Passport Photos.</li>
-                      <li>Financials: 6 Months Bank Statement & 3 Months Salary Slips (Salaried) or 2 Years ITR (Business).</li>
-                      <li>Property Documents (for Home/LAP/Plot Loans): Title link deeds (13-30 yrs), EC, legal opinion, and approved plan copy.</li>
-                    </ul>
+                    {activeLoan.documents.salaried.length > 0 && (
+                      <div className="space-y-1">
+                        <div className="font-bold text-slate-900">For Salaried Individuals:</div>
+                        <ul className="list-disc pl-5 space-y-1 text-slate-700">
+                          {activeLoan.documents.salaried.map((doc, idx) => (
+                            <li key={idx}>{doc}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {activeLoan.documents.selfEmployed.length > 0 && (
+                      <div className="space-y-1 pt-2">
+                        <div className="font-bold text-slate-900">For Self-Employed / Business Owners:</div>
+                        <ul className="list-disc pl-5 space-y-1 text-slate-700">
+                          {activeLoan.documents.selfEmployed.map((doc, idx) => (
+                            <li key={idx}>{doc}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
