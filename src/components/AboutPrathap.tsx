@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Award, GraduationCap, MapPin, Phone, Mail, CheckCircle2, ChevronRight } from "lucide-react";
 import { buildPhoneCallLink, buildWhatsAppLink } from "@/lib/utils";
 
@@ -12,10 +13,12 @@ export default function AboutPrathap() {
           {/* Left Column: Consultant Profile Badge & Stats */}
           <div className="lg:col-span-5 bg-brand-950 border border-blue-800 rounded-2xl p-6 sm:p-8 space-y-6">
             <div className="flex items-center gap-4 border-b border-blue-800/80 pb-4">
-              <div className="w-20 h-24 rounded-xl overflow-hidden bg-slate-900 border-2 border-blue-400 shrink-0 shadow-sm">
-                <img
+              <div className="w-20 h-24 rounded-xl overflow-hidden bg-slate-900 border-2 border-blue-400 shrink-0 shadow-sm relative">
+                <Image
                   src="/images/prathap.png"
                   alt="M Prathap, MBA - Senior Financial Advisor"
+                  width={160}
+                  height={192}
                   className="w-full h-full object-cover object-top"
                 />
               </div>

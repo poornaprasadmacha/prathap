@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, MessageCircle, Award, ChevronRight, Calculator, ShieldCheck, UserCheck } from "lucide-react";
 import { buildWhatsAppLink, buildPhoneCallLink } from "@/lib/utils";
 
@@ -27,10 +28,12 @@ export default function Hero() {
             
             {/* Framed Consultant Badge (Image 1 Style) */}
             <div className="inline-flex items-center gap-3 bg-white border border-[#c3e2c3] p-1.5 pr-4 rounded-2xl shadow-sm">
-              <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0">
-                <img
+              <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0 relative">
+                <Image
                   src="/images/prathap.png"
                   alt="M Prathap, MBA - Financial Consultant Tirupati"
+                  width={96}
+                  height={96}
                   className="w-full h-full object-cover object-top"
                 />
               </div>
@@ -129,10 +132,12 @@ export default function Hero() {
             {/* Card 1: Advisor Experience Card */}
             <div className="bg-white border border-[#d6ebd6] rounded-2xl p-5 shadow-sm flex flex-col justify-between space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0">
-                  <img
+                <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-100 border border-emerald-500 shrink-0 relative">
+                  <Image
                     src="/images/prathap.png"
                     alt="M Prathap, MBA"
+                    width={96}
+                    height={96}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
