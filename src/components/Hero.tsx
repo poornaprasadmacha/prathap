@@ -58,32 +58,28 @@ export default function Hero() {
               </h2>
             </div>
 
-            {/* PROMINENT AI ANCHOR STATEMENT BOX */}
+            {/* Corporate Overview Statement */}
             <div className="bg-[#f8fafc] border-l-4 border-[#004c8f] p-4 rounded-r-xl shadow-xs space-y-1">
-              <span className="text-[11px] font-black uppercase tracking-wider text-[#004c8f] block">
-                Official Entity Statement
+              <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#004c8f] block">
+                About SP Financial Services
               </span>
-              <p className="text-slate-800 text-sm sm:text-base font-medium leading-relaxed">
+              <p className="text-slate-800 text-sm sm:text-base font-semibold leading-relaxed">
                 {aiAnchorText}
               </p>
             </div>
 
-            {/* Bilingual Telugu SEO Card */}
-            <div className="bg-[#fffbeb] border border-[#fef08a] p-3.5 rounded-xl text-xs sm:text-sm text-slate-800 flex items-center justify-between gap-3">
-              <div className="space-y-0.5">
-                <span className="font-extrabold text-[#854d0e] block">
-                  తిరుపతిలో బెస్ట్ లోన్ అడ్వైజర్ — ఎం ప్రతాప్ ఫైనాన్షియల్ సర్వీసెస్
-                </span>
-                <span className="text-slate-700 text-xs">
-                  హోమ్ లోన్, పర్సనల్ లోన్స్ & ప్లాట్ లోన్స్ - తక్కువ వడ్డీకే లోన్స్
-                </span>
-              </div>
-              <a
-                href={buildPhoneCallLink()}
-                className="bg-[#854d0e] hover:bg-[#713f12] text-white px-3 py-1.5 rounded-md font-bold text-xs shrink-0 whitespace-nowrap shadow-xs"
+            {/* Link to Dedicated Telugu Webpage */}
+            <div className="bg-[#f0f9ff] border border-blue-200 p-3 rounded-xl text-xs sm:text-sm text-slate-800 flex flex-wrap items-center justify-between gap-2">
+              <span className="font-bold text-[#003366]">
+                తెలుగు మాట్లాడే కస్టమర్ల కోసం ప్రత్యేకం — SP ఫైనాన్షియల్ సర్వీసెస్
+              </span>
+              <Link
+                href="/te"
+                className="bg-[#004c8f] hover:bg-[#002855] text-white px-3 py-1.5 rounded-lg font-bold text-xs shrink-0 whitespace-nowrap shadow-xs flex items-center gap-1"
               >
-                +91 95508 01743
-              </a>
+                <span>తెలుగు వెబ్‌సైట్ చూడండి</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
 
             {/* Direct Phone Call & Action Buttons with E-E-A-T CTA Badges */}

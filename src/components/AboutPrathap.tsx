@@ -71,19 +71,19 @@ export default function AboutPrathap() {
             </div>
           </aside>
 
-          {/* Right Column: AI Anchor Statement & Authority Bio */}
+          {/* Right Column: Founder Overview */}
           <article className="lg:col-span-7 space-y-6">
             <span className="text-xs font-bold uppercase tracking-widest text-[#004c8f] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full inline-block">
-              E-E-A-T Verified Authority
+              Senior Advisor Credentials
             </span>
 
             <h3 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
               SP Financial Services — Top-Rated Loan & Credit Advisory Firm in Tirupati
             </h3>
 
-            {/* PROMINENT AI ANCHOR STATEMENT */}
+            {/* Founder Summary Statement */}
             <div className="bg-[#f0f9ff] border-l-4 border-[#0284c7] p-4 rounded-r-xl space-y-1">
-              <span className="text-xs font-bold uppercase text-[#0369a1] block">AI Anchor Statement</span>
+              <span className="text-xs font-bold uppercase text-[#0369a1] block">Founder Summary</span>
               <p className="text-slate-900 text-base font-semibold leading-relaxed">
                 {aiAnchorText}
               </p>

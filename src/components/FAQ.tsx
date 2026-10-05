@@ -47,7 +47,7 @@ export default function FAQ({
         {/* Header */}
         <div className="text-center space-y-2">
           <span className="text-xs font-extrabold uppercase tracking-widest text-[#004c8f] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full inline-block">
-            Voice Search & Conversational FAQs
+            Customer Help & Loan Advisory FAQs
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900">{title}</h2>
           <p className="text-sm text-slate-600 max-w-2xl mx-auto font-medium">{subtitle}</p>
@@ -58,13 +58,13 @@ export default function FAQ({
           {items.map((faq, idx) => {
             const isOpen = openIndex === idx;
             const isTelugu = faq.category === "Telugu FAQs";
-            const isVoice = faq.category === "Voice Search FAQs";
+            const isTopQuestion = faq.category === "Voice Search FAQs";
 
             return (
               <div
                 key={faq.id || idx}
                 className={`border rounded-xl overflow-hidden transition-colors ${
-                  isVoice ? "border-[#004c8f] bg-[#f8fafc]" : isTelugu ? "border-amber-300 bg-[#fffbeb]" : "border-slate-300 bg-white"
+                  isTopQuestion ? "border-[#004c8f] bg-[#f8fafc]" : isTelugu ? "border-amber-300 bg-[#fffbeb]" : "border-slate-300 bg-white"
                 }`}
               >
                 <button
@@ -72,9 +72,9 @@ export default function FAQ({
                   className="w-full px-5 py-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-4 hover:bg-slate-50 focus:outline-none"
                 >
                   <div className="flex items-center gap-2">
-                    {isVoice && (
+                    {isTopQuestion && (
                       <span className="bg-[#004c8f] text-white text-[10px] font-black uppercase px-2 py-0.5 rounded shrink-0">
-                        Voice AI
+                        Top FAQ
                       </span>
                     )}
                     {isTelugu && (

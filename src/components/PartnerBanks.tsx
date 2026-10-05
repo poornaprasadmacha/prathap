@@ -39,10 +39,6 @@ export default function PartnerBanks() {
           </div>
         </div>
 
-        <p className="text-[11px] text-center text-slate-400 mt-5 font-medium">
-          * Note: Logos scroll horizontally. Logos and trademarks belong to their respective institutions. SP Financial Services provides independent advisory and customer loan facilitation assistance in Tirupati and related areas.
-        </p>
-
       </div>
     </section>
   );

@@ -34,6 +34,13 @@ export const metadata: Metadata = {
     "తక్కువ వడ్డీకే లోన్స్ - +91 95508 01743",
     "తిరుపతి ప్లాట్ లోన్స్"
   ],
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      "en-IN": SITE_URL,
+      "te-IN": `${SITE_URL}/te`,
+    },
+  },
   authors: [{ name: "M Prathap, MBA" }],
   creator: "SP Financial Services",
   other: {
@@ -91,6 +98,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="alternate" hrefLang="en" href={SITE_URL} />
+        <link rel="alternate" hrefLang="te" href={`${SITE_URL}/te`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
