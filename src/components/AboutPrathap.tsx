@@ -24,7 +24,7 @@ export default function AboutPrathap() {
               </div>
               <div className="space-y-1">
                 <span className="text-xs font-bold uppercase tracking-wider text-blue-400 block">
-                  Senior Financial Advisor
+                  Senior Financial Advisor • SP Financial Services
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white">M Prathap</h2>
                 <div className="inline-flex items-center gap-1.5 bg-brand-800 text-blue-200 border border-blue-700/60 px-2.5 py-0.5 rounded text-xs font-semibold">
@@ -46,8 +46,8 @@ export default function AboutPrathap() {
               <div className="flex items-center gap-3 bg-brand-900 border border-blue-800/60 p-3 rounded">
                 <MapPin className="w-8 h-8 text-blue-400 shrink-0" />
                 <div>
-                  <span className="text-sm font-bold text-white block">Location</span>
-                  <span className="text-xs text-slate-300">Tirupati, Andhra Pradesh, India</span>
+                  <span className="text-sm font-bold text-white block">Location & Service Areas</span>
+                  <span className="text-xs text-slate-300">Tirupati, Chandragiri, Renigunta, Srikalahasti, AP</span>
                 </div>
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function AboutPrathap() {
             <div className="pt-2 space-y-2">
               <a
                 href={buildPhoneCallLink()}
-                className="w-full bg-brand-600 hover:bg-brand-500 text-white font-semibold py-2.5 px-4 rounded text-xs transition-colors flex items-center justify-center gap-2 border border-brand-500"
+                className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-2.5 px-4 rounded text-xs transition-colors flex items-center justify-center gap-2 border border-brand-500 shadow-sm"
               >
                 <Phone className="w-4 h-4" />
                 Call Direct: +91 95508 01743
@@ -73,11 +73,11 @@ export default function AboutPrathap() {
           {/* Right Column: Bio & Core Philosophy */}
           <div className="lg:col-span-7 space-y-6">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-              Personalized Financial Guidance Built on Transparency & Local Trust
+              SP Financial Services: Building Financial Security with Local Trust
             </h3>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              M Prathap holds a Master of Business Administration (MBA) degree and brings over 15+ years of hands-on experience in the financial sector. Based in Tirupati, he assists individuals, families, salaried employees, and business owners in making informed credit and insurance choices.
+              Founded by M Prathap, MBA, <strong>SP Financial Services</strong> has provided transparent, client-centered financial advice for over 15+ years in Tirupati and surrounding areas. We assist individuals, families, salaried professionals, and business owners in securing optimal loan packages and comprehensive insurance policies.
             </p>
 
             <div className="space-y-3 pt-2 text-sm text-slate-200">

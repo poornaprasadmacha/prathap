@@ -1,11 +1,12 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://prathap.ceeras.in";
 
 export const BUSINESS_DETAILS = {
-  name: "M Prathap Financial Services",
+  name: "SP Financial Services",
   consultant: "M Prathap",
   qualification: "MBA",
   experienceYears: 15,
   phone: "+91 9550801743",
+  displayPhone: "+91 95508 01743",
   email: "prathapmba10@gmail.com",
   city: "Tirupati",
   state: "Andhra Pradesh",

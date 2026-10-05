@@ -11,11 +11,14 @@ export default function PartnerBanks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-bold text-brand-900">
+          <span className="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 border border-brand-200 px-3 py-1 rounded-full inline-block">
+            Our Financial Network
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-900">
             Banks & Financial Institutions We Assist Customers With
           </h2>
           <p className="text-xs sm:text-sm text-slate-600">
-            We evaluate loan criteria across major public sector banks, private banks, housing finance companies, and NBFCs in Tirupati.
+            SP Financial Services evaluates loan criteria across major public & private sector banks, HFCs, and NBFCs in Tirupati and surrounding areas.
           </p>
         </div>
 
@@ -26,7 +29,7 @@ export default function PartnerBanks() {
         </div>
 
         <p className="text-[11px] text-center text-slate-400 mt-6">
-          * Note: Logos and trademarks belong to their respective institutions. M Prathap Financial Services provides independent advisory and customer loan facilitation assistance.
+          * Note: Logos and trademarks belong to their respective institutions. SP Financial Services provides independent advisory and customer loan facilitation assistance in Tirupati and related areas.
         </p>
 
       </div>

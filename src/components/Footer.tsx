@@ -15,29 +15,30 @@ export default function Footer() {
           {/* Col 1: Brand & Profile */}
           <div className="lg:col-span-2 space-y-4">
             <div>
-              <span className="text-2xl font-bold text-white tracking-tight block">
-                M PRATHAP
+              <span className="text-2xl font-black text-white tracking-tight flex items-center gap-2">
+                <span className="bg-brand-600 text-white px-2 py-0.5 rounded text-lg font-black">SP</span>
+                <span>FINANCIAL SERVICES</span>
               </span>
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400 block mt-0.5">
-                Financial Services • Tirupati
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-400 block mt-1">
+                Tirupati & Surrounding Areas • Loan & Insurance Advisory
               </span>
             </div>
             <p className="text-sm text-slate-300 leading-relaxed pr-4">
-              Professional financial, loan & insurance advisory guided by M Prathap, MBA, with over 15+ years of sector experience in Tirupati and Chittoor region. Dedicated to transparent comparative guidance across top banks and insurance institutions.
+              Professional financial, loan & insurance advisory guided by M Prathap, MBA, with over 15+ years of sector experience. Serving Tirupati, Chandragiri, Renigunta, Srikalahasti, and surrounding areas with transparent comparative guidance across leading banks and insurance companies.
             </p>
             <div className="space-y-2 pt-2 text-sm">
               <div className="flex items-center gap-2 text-slate-200">
                 <Award className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>M Prathap, MBA (15+ Years Sector Experience)</span>
+                <span>SP Financial Services — M Prathap, MBA (15+ Yrs Exp)</span>
               </div>
               <div className="flex items-center gap-2 text-slate-200">
                 <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>Tirupati, Andhra Pradesh, India</span>
+                <span>Tirupati & Surrounding Regions, Andhra Pradesh</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-blue-400 shrink-0" />
-                <a href={buildPhoneCallLink()} className="hover:text-white font-medium">
-                  +91 9550801743
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a href={buildPhoneCallLink()} className="hover:text-emerald-300 font-bold text-white text-base">
+                  +91 95508 01743
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -181,14 +182,14 @@ export default function Footer() {
             Mandatory Financial & Regulatory Disclaimer:
           </p>
           <p>
-            * Interest rates displayed on this website (Home Loans 7.15%*, LAP 8.50%*, Personal Loans 9.90%*, Business Loans 10.00%*) are indicative starting rates subject to change and depend strictly on applicant credit score (CIBIL), loan amount, tenure, employer category, legal title search, and lender underwriting criteria. M Prathap Financial Services acts as a professional loan and insurance consultant assisting clients in connecting with banks, NBFCs, housing finance companies, and IRDAI-registered insurance providers. Loan approvals, interest rates, processing fees, terms, and conditions are determined exclusively by the respective lending institution. Insurance policy coverage, premiums, exclusions, and claim settlements are governed strictly by the official policy wording of respective insurance companies.
+            * Interest rates displayed on this website (Home Loans 7.15%*, LAP 8.50%*, Personal Loans 9.90%*, Business Loans 10.00%*) are indicative starting rates subject to change and depend strictly on applicant credit score (CIBIL), loan amount, tenure, employer category, legal title search, and lender underwriting criteria. SP Financial Services acts as a professional loan and insurance consultant assisting clients in connecting with banks, NBFCs, housing finance companies, and IRDAI-registered insurance providers in Tirupati and related areas. Loan approvals, interest rates, processing fees, terms, and conditions are determined exclusively by the respective lending institution. Insurance policy coverage, premiums, exclusions, and claim settlements are governed strictly by the official policy wording of respective insurance companies.
           </p>
         </div>
 
         {/* Bottom copyright & legal sub-links */}
         <div className="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            © {currentYear} M Prathap Financial Services. All rights reserved. Tirupati, Andhra Pradesh.
+            © {currentYear} SP Financial Services. All rights reserved. Tirupati and Surrounding Areas, Andhra Pradesh.
           </div>
           <div className="flex items-center gap-4">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">

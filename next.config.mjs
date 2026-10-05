@@ -19,6 +19,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'exchange4media.gumlet.io',
       },
+      {
+        protocol: 'https',
+        hostname: 'blogger.googleusercontent.com',
+      },
     ],
     unoptimized: true, // Ensured high compatibility across static hosts / Cloudflare Pages
   },

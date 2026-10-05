@@ -1,11 +1,11 @@
 import React from "react";
 import Hero from "@/components/Hero";
+import PartnerBanks from "@/components/PartnerBanks";
+import PartnerInsuranceCompanies from "@/components/PartnerInsuranceCompanies";
 import LatestUpdatesSection from "@/components/LatestUpdatesSection";
 import TrustSection from "@/components/TrustSection";
 import LoanServices from "@/components/LoanServices";
 import InsuranceServices from "@/components/InsuranceServices";
-import PartnerBanks from "@/components/PartnerBanks";
-import PartnerInsuranceCompanies from "@/components/PartnerInsuranceCompanies";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import AboutPrathap from "@/components/AboutPrathap";
 import LeadForm from "@/components/LeadForm";
@@ -18,58 +18,60 @@ import Disclaimer from "@/components/Disclaimer";
 export default function HomePage() {
   return (
     <div className="space-y-0 bg-slate-50">
-      {/* Hero Banner (Soft Mint Canvas & Mosaic Grid - Image 1 Theme) */}
+      {/* 1. Profile Hero Section with SP Financial Services branding, enlarged photo, displayed phone number */}
       <Hero />
 
-      {/* Latest Notifications & Rates Ticker (Image 2 Theme) */}
+      {/* 2. Partner Logos Showcase immediately after Profile Hero */}
+      <div id="partner-logos" className="bg-white border-b border-slate-200">
+        <PartnerBanks />
+        <PartnerInsuranceCompanies />
+      </div>
+
+      {/* 3. Latest Notifications & Live Benchmark Rates */}
       <LatestUpdatesSection />
 
-      {/* Trust Highlights Bar */}
+      {/* 4. Trust Highlights Bar */}
       <TrustSection />
 
-      {/* Interactive Loan Services Hub (Image 3 Theme) */}
+      {/* 5. Interactive Loan Services Hub */}
       <LoanServices />
 
-      {/* Interactive EMI Calculator Preview */}
+      {/* 6. Interactive EMI Calculator Preview */}
       <section className="py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <EMIForm initialAmount={3500000} initialRate={7.15} initialTenure={20} loanTitle="Home Loan" />
         </div>
       </section>
 
-      {/* Insurance Section */}
+      {/* 7. Insurance Solutions Hub */}
       <InsuranceServices />
 
-      {/* Institution Showcase */}
-      <PartnerBanks />
-      <PartnerInsuranceCompanies />
-
-      {/* Why Choose M Prathap */}
+      {/* 8. Why Choose SP Financial Services */}
       <WhyChooseUs />
 
-      {/* About Consultant Highlight */}
+      {/* 9. Founder & Senior Advisor Biography */}
       <AboutPrathap />
 
-      {/* Lead Enquiry Form */}
+      {/* 10. Direct Lead Enquiry Form */}
       <section className="py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <LeadForm
-            title="Get Personalized Loan & Insurance Guidance"
-            subtitle="Submit your details for an immediate confidential consultation with M Prathap, MBA."
+            title="Get Personalized Loan & Insurance Guidance in Tirupati"
+            subtitle="Submit your contact details for immediate confidential consultation with M Prathap, MBA at SP Financial Services."
           />
         </div>
       </section>
 
-      {/* Client Experience */}
+      {/* 11. Client Testimonials */}
       <Testimonials />
 
-      {/* Local Geography Mandals */}
+      {/* 12. Local Mandals & GEO Areas for Tirupati & Surrounding Regions */}
       <LocalAreas />
 
-      {/* FAQ Accordion */}
+      {/* 13. Frequently Asked Questions */}
       <FAQ />
 
-      {/* Regulatory Legal Disclaimer */}
+      {/* 14. Regulatory & Legal Disclaimer */}
       <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Disclaimer />

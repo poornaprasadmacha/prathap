@@ -8,11 +8,13 @@ import { getLocalBusinessSchema, SITE_URL } from "@/lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "M Prathap Financial Services | Loans & Insurance in Tirupati",
-    template: "%s | M Prathap Financial Services Tirupati"
+    default: "SP Financial Services | Home Loans, Personal Loans & Insurance in Tirupati & Surrounding Areas",
+    template: "%s | SP Financial Services Tirupati"
   },
-  description: "Premier financial & loan consultancy in Tirupati guided by M Prathap, MBA (15+ Years experience). Home Loans (7.15%*), LAP (8.5%*), Personal Loans (9.9%*), Business Finance, Life & Health Insurance.",
+  description: "SP Financial Services guided by M Prathap, MBA (15+ Years Experience). Specializing in Home Loans (7.15%*), LAP (8.5%*), Personal Loans (9.9%*), Business Loans, Life & Health Insurance in Tirupati, Chandragiri, Renigunta, Srikalahasti & surrounding regions.",
   keywords: [
+    "SP Financial Services",
+    "SP Financial Services Tirupati",
     "Financial Consultant in Tirupati",
     "Financial Advisor in Tirupati",
     "Loan Consultant in Tirupati",
@@ -21,7 +23,6 @@ export const metadata: Metadata = {
     "Housing Loans in Tirupati",
     "Personal Loans in Tirupati",
     "Personal Loan Consultant in Tirupati",
-    "Personal Loan Near Me",
     "Business Loans in Tirupati",
     "Loan Against Property Tirupati",
     "LAP Loan Tirupati",
@@ -31,10 +32,10 @@ export const metadata: Metadata = {
     "Life Insurance Tirupati"
   ],
   authors: [{ name: "M Prathap, MBA" }],
-  creator: "M Prathap Financial Services",
+  creator: "SP Financial Services",
   other: {
     "geo.region": "IN-AP",
-    "geo.placename": "Tirupati",
+    "geo.placename": "Tirupati, Andhra Pradesh",
     "geo.position": "13.6288;79.4192",
     "ICBM": "13.6288, 79.4192"
   },
@@ -42,14 +43,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: SITE_URL,
-    siteName: "M Prathap Financial Services",
-    title: "M Prathap Financial Services | Loans & Insurance in Tirupati",
-    description: "Expert loan & insurance guidance from M Prathap, MBA with 15+ years experience in Tirupati. Home Loans, LAP, Personal Loans, Business Finance & Health Insurance.",
+    siteName: "SP Financial Services",
+    title: "SP Financial Services | Top Loans & Insurance Advisor in Tirupati",
+    description: "Expert loan & insurance guidance from M Prathap, MBA with 15+ years experience at SP Financial Services, serving Tirupati and related areas.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "M Prathap Financial Services | Loans & Insurance in Tirupati",
-    description: "Home Loans starting 7.15%*, LAP 8.5%*, Personal Loans 9.9%*, Business Loans 10%* & Insurance Solutions in Tirupati.",
+    title: "SP Financial Services | Loans & Insurance in Tirupati",
+    description: "Home Loans starting 7.15%*, LAP 8.5%*, Personal Loans 9.9%*, Business Loans 10%* & Insurance Solutions in Tirupati and related areas.",
   },
   robots: {
     index: true,

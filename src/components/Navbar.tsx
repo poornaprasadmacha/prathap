@@ -19,12 +19,12 @@ export default function Navbar() {
           <div className="flex items-center gap-2 overflow-hidden text-[11px] sm:text-xs">
             <span className="flex items-center gap-1 font-semibold text-amber-300 whitespace-nowrap">
               <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span className="hidden sm:inline">M Prathap, MBA — 15+ Years Experience</span>
-              <span className="sm:hidden">M Prathap, MBA (15+ Yrs Exp)</span>
+              <span className="hidden sm:inline">SP Financial Services — M Prathap, MBA (15+ Yrs Exp)</span>
+              <span className="sm:hidden">SP Financial Services • Tirupati</span>
             </span>
             <span className="hidden lg:inline text-slate-500">|</span>
             <span className="hidden lg:inline text-slate-300">
-              Tirupati & Surrounding Areas, AP
+              Serving Tirupati, Chandragiri, Renigunta & Surrounding Areas, AP
             </span>
           </div>
 
@@ -32,14 +32,13 @@ export default function Navbar() {
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <a
               href={buildPhoneCallLink()}
-              className="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[11px] font-semibold transition-colors shadow-sm"
+              className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white px-2.5 py-1 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all shadow-sm hover:scale-105"
             >
-              <Phone className="w-3 h-3 text-blue-100" />
-              <span className="hidden sm:inline">+91 95508 01743</span>
-              <span className="sm:hidden">Call</span>
+              <Phone className="w-3.5 h-3.5 text-blue-100" />
+              <span>+91 95508 01743</span>
             </a>
             <a
-              href={buildWhatsAppLink("Hello M Prathap, I have a financial inquiry.")}
+              href={buildWhatsAppLink("Hello SP Financial Services, I would like to inquire about loan options in Tirupati.")}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1 bg-emerald-600 hover:bg-emerald-500 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[11px] font-semibold transition-colors shadow-sm"
@@ -56,11 +55,12 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo / Brand Name */}
           <Link href="/" className="flex flex-col group leading-tight">
-            <span className="text-lg sm:text-2xl font-bold tracking-tight text-brand-900 group-hover:text-brand-700 transition-colors">
-              M PRATHAP
+            <span className="text-xl sm:text-2xl font-black tracking-tight text-brand-900 group-hover:text-brand-700 transition-colors flex items-center gap-1.5">
+              <span className="bg-brand-900 text-white px-2 py-0.5 rounded-lg text-lg font-black tracking-widest">SP</span>
+              <span>FINANCIAL SERVICES</span>
             </span>
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-brand-600">
-              Financial Services • Tirupati
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-brand-600">
+              Tirupati & Related Areas • Loan & Insurance Advisory
             </span>
           </Link>
 

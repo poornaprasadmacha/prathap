@@ -11,11 +11,11 @@ export default function PartnerInsuranceCompanies() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-8 space-y-2">
-          <h3 className="text-xl sm:text-2xl font-bold text-brand-900">
-            Leading Insurance Institutions We Help You Evaluate
+          <h3 className="text-xl sm:text-2xl font-extrabold text-brand-900">
+            Leading Insurance Institutions Evaluated by SP Financial Services
           </h3>
           <p className="text-xs sm:text-sm text-slate-600">
-            Compare term life, health floater, motor, and general policy terms across top insurance providers.
+            Compare term life, family health floater, motor, and general policies across top IRDAI registered insurers in Tirupati and surrounding areas.
           </p>
         </div>
 
