@@ -8,28 +8,31 @@ import { getLocalBusinessSchema, SITE_URL } from "@/lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "SP Financial Services | Home Loans, Personal Loans & Insurance in Tirupati & Surrounding Areas",
+    default: "Best Loan Advisors in Tirupati | Top Loan Agents in TPT | SP Financial Services",
     template: "%s | SP Financial Services Tirupati"
   },
-  description: "SP Financial Services guided by M Prathap, MBA (15+ Years Experience). Specializing in Home Loans (7.15%*), LAP (8.5%*), Personal Loans (9.9%*), Business Loans, Life & Health Insurance in Tirupati, Chandragiri, Renigunta, Srikalahasti & surrounding regions.",
+  description: "SP Financial Services, founded by M Prathap (MBA, 15+ Years Experience), is the top-rated loan advisory firm in Tirupati. Instant Home Loans (7.15%*), Personal Loans (9.9%*), LAP & Insurance. Contact +91 95508 01743.",
   keywords: [
+    // English Target Queries
+    "Best Loan Advisors in Tirupati",
+    "Top Loan Agents in TPT",
+    "M Prathap SP Financial Services",
+    "Instant Home and Personal Loans Tirupati",
     "SP Financial Services",
     "SP Financial Services Tirupati",
-    "Financial Consultant in Tirupati",
-    "Financial Advisor in Tirupati",
-    "Loan Consultant in Tirupati",
     "Home Loan Consultant in Tirupati",
-    "Home Loans in Tirupati",
-    "Housing Loans in Tirupati",
-    "Personal Loans in Tirupati",
-    "Personal Loan Consultant in Tirupati",
-    "Business Loans in Tirupati",
-    "Loan Against Property Tirupati",
-    "LAP Loan Tirupati",
+    "Flat Loan Tirupati",
     "Plot Loan Tirupati",
-    "Insurance Consultant in Tirupati",
+    "Loan Against Property Tirupati",
+    "Business Loans in Tirupati",
     "Health Insurance Tirupati",
-    "Life Insurance Tirupati"
+    "Life Insurance Advisor Tirupati",
+    // Telugu Target Queries
+    "తిరుపతిలో బెస్ట్ లోన్ అడ్వైజర్",
+    "ఎం ప్రతాప్ ఫైనాన్షియల్ సర్వీసెస్ తిరుపతి",
+    "హోమ్ లోన్, పర్సనల్ లోన్స్ తిరుపతి",
+    "తక్కువ వడ్డీకే లోన్స్ - +91 95508 01743",
+    "తిరుపతి ప్లాట్ లోన్స్"
   ],
   authors: [{ name: "M Prathap, MBA" }],
   creator: "SP Financial Services",
@@ -44,17 +47,33 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     siteName: "SP Financial Services",
-    title: "SP Financial Services | Top Loans & Insurance Advisor in Tirupati",
-    description: "Expert loan & insurance guidance from M Prathap, MBA with 15+ years experience at SP Financial Services, serving Tirupati and related areas.",
+    title: "Best Loan Advisors in Tirupati | SP Financial Services (M Prathap, MBA)",
+    description: "SP Financial Services, founded by M Prathap (MBA, 15+ Years Experience), is the top-rated loan advisory firm in Tirupati. Call +91 95508 01743.",
+    images: [
+      {
+        url: `${SITE_URL}/images/m-prathap-mba-sp-financial-services-founder-tirupati.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "M Prathap MBA - Founder SP Financial Services Tirupati"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "SP Financial Services | Loans & Insurance in Tirupati",
-    description: "Home Loans starting 7.15%*, LAP 8.5%*, Personal Loans 9.9%*, Business Loans 10%* & Insurance Solutions in Tirupati and related areas.",
+    title: "Best Loan Advisors in Tirupati | SP Financial Services",
+    description: "Home Loans 7.15%*, Personal Loans 9.9%*, LAP 8.5%* & Insurance. Call +91 95508 01743.",
+    images: [`${SITE_URL}/images/m-prathap-mba-sp-financial-services-founder-tirupati.jpg`]
   },
   robots: {
     index: true,
-    follow: true
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: "/icon.svg",
@@ -77,7 +96,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-brand-100 selection:text-brand-900">
+      <body className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900 antialiased">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

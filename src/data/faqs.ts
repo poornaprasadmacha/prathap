@@ -1,87 +1,76 @@
 export interface FAQItem {
   id: string;
-  category: "Home Loans" | "Personal Loans" | "Business Loans" | "LAP" | "Plot Loans" | "Health Insurance" | "Life Insurance" | "General Insurance" | "Calculators" | "Tirupati Local";
+  category: "Voice Search FAQs" | "Telugu FAQs" | "Home Loans" | "Personal Loans" | "Business Loans" | "LAP" | "Plot Loans" | "Health Insurance" | "Life Insurance" | "Tirupati Local";
   question: string;
   answer: string;
+  teluguQuestion?: string;
 }
 
 export const MAIN_FAQS: FAQItem[] = [
   {
+    id: "voice-1",
+    category: "Voice Search FAQs",
+    question: "Who is the best loan advisor in Tirupati?",
+    answer: "With over 15 years of experience and an MBA, M Prathap at SP Financial Services is widely considered the best loan advisor in Tirupati. You can reach him immediately at +91 95508 01743."
+  },
+  {
+    id: "voice-2",
+    category: "Voice Search FAQs",
+    question: "How can I contact M Prathap at SP Financial Services in Tirupati?",
+    answer: "SP Financial Services, founded by M Prathap (MBA, 15+ Years Experience), is the top-rated loan advisory firm in Tirupati. Contact our expert team directly at +91 95508 01743."
+  },
+  {
+    id: "telugu-1",
+    category: "Telugu FAQs",
+    question: "తిరుపతిలో బెస్ట్ లోన్ అడ్వైజర్ ఎవరు?",
+    answer: "15+ సంవత్సరాల ఫైనాన్షియల్ అనుభవం మరియు MBA అర్హత కలిగిన ఎం ప్రతాప్ (SP Financial Services) తిరుపతిలో బెస్ట్ లోన్ అడ్వైజర్‌గా నిలిచారు. వెంటనే సంప్రదించండి: +91 95508 01743."
+  },
+  {
+    id: "telugu-2",
+    category: "Telugu FAQs",
+    question: "హోమ్ లోన్, పర్సనల్ లోన్స్ తిరుపతిలో తక్కువ వడ్డీకే ఎలా పొందాలి?",
+    answer: "SP Financial Services తిరుపతి ద్వారా HDFC, SBI, ICICI మరియు ప్రముఖ బ్యాంకుల నుంచి హోమ్ లోన్స్ (7.15%* నుండి), పర్సనల్ లోన్స్ (9.90%* నుండి), LAP (8.50%* నుండి) మరియు ప్లాట్ లోన్స్ త్వరితగతిన పొందవచ్చు. కాల్ చేయండి: +91 95508 01743."
+  },
+  {
     id: "hl-1",
     category: "Home Loans",
-    question: "How can I apply for a home loan in Tirupati through M Prathap Financial Services?",
-    answer: "Applying for a home loan in Tirupati is straightforward. Contact M Prathap via call (+91 9550801743) or submit your details through our online enquiry form. We evaluate your profile, income documents, and property details to select the best banking offers from leading lenders like HDFC Bank, SBI, ICICI, Union Bank, and others."
+    question: "How can I apply for a home loan in Tirupati through SP Financial Services?",
+    answer: "Applying for a home loan in Tirupati through SP Financial Services is simple. Contact M Prathap directly via phone (+91 95508 01743) or submit your details online. SP Financial Services, founded by M Prathap (MBA, 15+ Years Experience), evaluates your credit profile against leading lenders like HDFC, SBI, ICICI, Union Bank, and Tata Capital for fast approval."
   },
   {
     id: "hl-2",
     category: "Home Loans",
-    question: "What documents are required for a home loan for salaried employees in Tirupati?",
-    answer: "Salaried applicants typically need: PAN Card, Aadhaar Card, latest 3 months' salary slips, 6 months' bank account statements showing salary credits, Form 16 or ITR for 2 years, and property documents (sale agreement, approved plan, link deeds, EC)."
+    question: "What documents are required for a home loan or flat loan in Tirupati?",
+    answer: "Salaried applicants need: PAN, Aadhaar, 3 months' salary slips, 6 months' bank statement, Form 16/ITR, and property title documents (Sale deed, approved plan, link deeds, EC). Self-employed applicants require 3 years ITR, business proof, and 12 months bank statement."
   },
   {
     id: "hl-3",
     category: "Home Loans",
-    question: "What is the indicative starting home loan interest rate mentioned on this site?",
-    answer: "The indicative starting interest rate for home loans is 7.15%* per annum for eligible borrowers. Final rates depend on individual CIBIL score, loan amount, employer categorization, tenure, and lender underwriting policies."
-  },
-  {
-    id: "hl-4",
-    category: "Home Loans",
-    question: "Can self-employed individuals in Tirupati get home loans?",
-    answer: "Yes. Self-employed business owners and professionals can secure home loans by providing PAN/Aadhaar, GST registration/business proof, 3 years' audited ITR with computation, 12 months' business bank statements, and property legal title deeds."
+    question: "What is the starting home loan interest rate in Tirupati?",
+    answer: "Indicative starting interest rates for home loans start from 7.15%* per annum for eligible borrowers with good CIBIL scores."
   },
   {
     id: "pl-1",
     category: "Personal Loans",
-    question: "How is personal loan eligibility determined?",
-    answer: "Personal loan eligibility is calculated based on your net monthly salary, monthly existing EMI obligations (FOIR - Fixed Obligation to Income Ratio), credit score (CIBIL 720+ preferred), employment stability, and age."
-  },
-  {
-    id: "pl-2",
-    category: "Personal Loans",
-    question: "What is the starting indicative rate for personal loans?",
-    answer: "The indicative starting rate for personal loans starts from 9.90%* per annum. Actual rates vary from bank to bank based on your credit profile and organization classification."
+    question: "Who offers the top personal loan assistance in TPT Tirupati?",
+    answer: "SP Financial Services guided by M Prathap, MBA (15+ Years Experience) provides instant personal loan assistance in Tirupati starting from 9.90%* per annum. Call +91 95508 01743 for direct doorstep processing."
   },
   {
     id: "bl-1",
     category: "Business Loans",
-    question: "Can small MSME businesses in Tirupati get unsecured business loans?",
-    answer: "Yes, small businesses, traders, and manufacturing units in Tirupati with a minimum of 2 years operational vintage, GST filings, and healthy banking transaction history can qualify for collateral-free MSME business loans starting around 10.00%* per annum."
+    question: "Can MSME business owners in Tirupati get collateral-free business loans?",
+    answer: "Yes, MSME businesses, traders, and manufacturing units in Tirupati with 2+ years of operation and GST filings can qualify for collateral-free business loans starting around 10.00%* per annum."
   },
   {
     id: "lap-1",
     category: "LAP",
-    question: "What is a Loan Against Property (LAP) and how does it work?",
-    answer: "A Loan Against Property (LAP) is a secured loan where you pledge your residential or commercial property in Tirupati as collateral to get funds for business expansion, education, or debt consolidation. Indicative starting interest rates begin at 8.50%* per annum."
+    question: "What is Loan Against Property (LAP) in Tirupati?",
+    answer: "Loan Against Property (LAP) allows property owners in Tirupati to mortgage residential or commercial real estate for business expansion or personal needs at low interest rates starting from 8.50%* per annum."
   },
   {
     id: "plot-1",
     category: "Plot Loans",
     question: "Can I get a loan for purchasing a residential plot in Tirupati?",
-    answer: "Yes. Plot purchase loans are available for buying plots in TUDA or DTCP approved layouts. You can also opt for a combined Plot + Construction loan to fund both land purchase and home building simultaneously."
-  },
-  {
-    id: "hi-1",
-    category: "Health Insurance",
-    question: "Why is a Family Floater Health Insurance policy recommended?",
-    answer: "A Family Floater Health policy covers your entire family (self, spouse, and children) under a single shared sum insured pool. It is significantly more cost-effective than taking individual health policies for each member while providing high cashless hospital coverage."
-  },
-  {
-    id: "hi-2",
-    category: "Health Insurance",
-    question: "What is cashless hospitalisation in Tirupati?",
-    answer: "Cashless hospitalisation allows you to receive medical treatment at network hospitals in Tirupati without paying hospital bill amounts directly (except non-admissible expenses). The insurance provider settles eligible expenses directly with the hospital."
-  },
-  {
-    id: "li-1",
-    category: "Life Insurance",
-    question: "What is Term Insurance and why is it important?",
-    answer: "Term Insurance is pure life protection that provides a large sum assured to your family at a very low annual premium in the event of unforeseen death. It ensures your family can clear existing home loans and maintain financial stability."
-  },
-  {
-    id: "local-1",
-    category: "Tirupati Local",
-    question: "Why consult M Prathap, MBA for loans and insurance in Tirupati?",
-    answer: "M Prathap brings over 15+ years of dedicated financial sector experience in Andhra Pradesh. Instead of visiting multiple banks individually, you receive unbiased comparative guidance, doorstep documentation support, and end-to-end processing across major banks and insurers in Tirupati."
+    answer: "Yes, plot purchase loans are available for buying plots in TUDA or DTCP approved layouts in Tirupati, Chandragiri, Renigunta, and Srikalahasti."
   }
 ];

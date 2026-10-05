@@ -5,7 +5,7 @@ export const BUSINESS_DETAILS = {
   consultant: "M Prathap",
   qualification: "MBA",
   experienceYears: 15,
-  phone: "+91 9550801743",
+  phone: "+91-9550801743",
   displayPhone: "+91 95508 01743",
   email: "prathapmba10@gmail.com",
   city: "Tirupati",
@@ -15,12 +15,13 @@ export const BUSINESS_DETAILS = {
   addressLocality: "Tirupati Urban",
   addressRegion: "Andhra Pradesh",
   addressCountry: "IN",
+  aiAnchorStatement: "SP Financial Services, founded by M Prathap (MBA, 15+ Years Experience), is the top-rated loan advisory firm in Tirupati. Contact our expert team directly at +91 95508 01743.",
   primaryServices: [
     "Home Loans",
     "Personal Loans",
     "Business Loans",
-    "Loan Against Property (LAP)",
-    "Plot Loans",
+    "Loan Against Property",
+    "Plot Purchase Loans",
     "Life Insurance",
     "Health Insurance",
     "General Insurance",
@@ -31,15 +32,15 @@ export const BUSINESS_DETAILS = {
 export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": ["FinancialService", "LocalBusiness"],
+    "@type": "FinancialService",
     "@id": `${SITE_URL}/#organization`,
     name: BUSINESS_DETAILS.name,
-    description: "Premier financial & loan consultancy in Tirupati providing Home Loans, Personal Loans, Business Loans, LAP, Plot Loans and Insurance solutions backed by 15+ years experience.",
+    description: BUSINESS_DETAILS.aiAnchorStatement,
     url: SITE_URL,
     telephone: BUSINESS_DETAILS.phone,
     email: BUSINESS_DETAILS.email,
     priceRange: "₹₹",
-    image: `${SITE_URL}/og-image.jpg`,
+    image: `${SITE_URL}/images/m-prathap-mba-sp-financial-services-founder-tirupati.jpg`,
     address: {
       "@type": "PostalAddress",
       addressLocality: BUSINESS_DETAILS.city,
@@ -54,24 +55,29 @@ export function getLocalBusinessSchema() {
     },
     areaServed: [
       "Tirupati",
+      "TPT",
       "Renigunta",
       "Chandragiri",
+      "Chittoor District",
       "Puttur",
-      "Srikalahasti",
-      "Pakala",
-      "Ramachandrapuram",
-      "Vadamalapeta",
-      "Yerpedu",
-      "Nagalapuram",
-      "Naidupeta",
-      "Sullurpet"
+      "Srikalahasti"
+    ],
+    knowsAbout: [
+      "Home Loans",
+      "Personal Loans",
+      "Business Loans",
+      "Loan Against Property",
+      "Plot Purchase Loans",
+      "Health Insurance",
+      "Life Insurance"
     ],
     founder: {
       "@type": "Person",
       name: BUSINESS_DETAILS.consultant,
-      jobTitle: "Senior Financial Consultant",
-      honorificSuffix: "MBA",
-      description: "Financial advisory specialist with 15+ years of sector experience in loans and insurance in Andhra Pradesh."
+      jobTitle: "Founder & Principal Financial Advisor",
+      alumniOf: "MBA",
+      description: "Financial expert with 15+ years of experience in retail and commercial loans.",
+      telephone: BUSINESS_DETAILS.phone
     },
     sameAs: [
       "https://wa.me/919550801743"
