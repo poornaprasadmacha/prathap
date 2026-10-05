@@ -6,11 +6,14 @@ import { LENDING_INSTITUTIONS, InstitutionPartner } from "@/data/partners";
 import { Building2 } from "lucide-react";
 
 export default function PartnerBanks() {
+  // Duplicate array for seamless infinite horizontal scroll marquee
+  const doublePartners = [...LENDING_INSTITUTIONS, ...LENDING_INSTITUTIONS];
+
   return (
-    <section className="py-10 bg-white border-b border-slate-200">
+    <section className="py-10 bg-white border-b border-slate-200 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-3xl mx-auto mb-8 space-y-2">
+        <div className="text-center max-w-3xl mx-auto mb-6 space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-[#004c8f] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full inline-block">
             Our Lending Network & Bank Partners
           </span>
@@ -22,14 +25,22 @@ export default function PartnerBanks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-          {LENDING_INSTITUTIONS.map((inst, index) => (
-            <BankCardItem key={index} partner={inst} />
-          ))}
+        {/* HORIZONTAL AUTO-SCROLLING MARQUEE CONTAINER */}
+        <div className="relative w-full overflow-hidden py-2 bg-slate-50/60 rounded-2xl border border-slate-200">
+          
+          {/* Gradient fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          <div className="animate-marquee flex gap-4 px-4">
+            {doublePartners.map((inst, index) => (
+              <BankCardItem key={index} partner={inst} />
+            ))}
+          </div>
         </div>
 
-        <p className="text-[11px] text-center text-slate-400 mt-6 font-medium">
-          * Note: Logos and trademarks belong to their respective institutions. SP Financial Services provides independent advisory and customer loan facilitation assistance in Tirupati and related areas.
+        <p className="text-[11px] text-center text-slate-400 mt-5 font-medium">
+          * Note: Logos scroll horizontally. Logos and trademarks belong to their respective institutions. SP Financial Services provides independent advisory and customer loan facilitation assistance in Tirupati and related areas.
         </p>
 
       </div>
@@ -41,15 +52,15 @@ function BankCardItem({ partner }: { partner: InstitutionPartner }) {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div className="bg-white border border-slate-300 hover:border-[#004c8f] rounded-xl p-3.5 flex flex-col items-center justify-center text-center space-y-2 min-h-[110px] max-h-[140px] overflow-hidden shadow-2xs hover:shadow-md transition-all">
+    <div className="bg-white border border-slate-300 hover:border-[#004c8f] rounded-xl p-3 flex flex-col items-center justify-center text-center space-y-1.5 w-44 sm:w-48 shrink-0 min-h-[105px] max-h-[125px] overflow-hidden shadow-2xs hover:shadow-md transition-all">
       {!imageError ? (
-        <div className="relative w-full h-10 flex items-center justify-center overflow-hidden">
+        <div className="relative w-full h-9 flex items-center justify-center overflow-hidden">
           <Image
             src={partner.logoUrl}
             alt={`${partner.name} Tirupati`}
-            width={140}
-            height={40}
-            style={{ maxHeight: "36px", maxWidth: "130px", width: "auto", height: "auto", objectFit: "contain" }}
+            width={130}
+            height={36}
+            style={{ maxHeight: "32px", maxWidth: "120px", width: "auto", height: "auto", objectFit: "contain" }}
             onError={() => setImageError(true)}
             unoptimized
           />
